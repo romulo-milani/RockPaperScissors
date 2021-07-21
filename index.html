@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/12c29c871e.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
@@ -12,6 +13,51 @@
     <title>Rock Paper and Scisors</title>
 </head>
 <body>
+    <div class="title">
+        <h1>Can you beat the computer?</h1>
+        <h1>Rock, paper or scissors?</h1>
+
+    </div>
+
+    <div class="main">
+        <div class="player">
+            <div class="container">
+                <p class="player-p">Player</p>
+                <i class="fas fa-user icon"></i>
+            </div>
+            
+            <div class="player-options">
+                <button class="btn"><i class="fas fa-hand-rock op-icon"></i>Rock</button>
+                <button class="btn"><i class="fas fa-hand-paper op-icon"></i>Paper</button>
+                <button class="btn"><i class="fas fa-hand-peace op-icon"></i>Scissors</button>
+            </div>
+        </div>
+
+        <div class="computer">
+            <div class="container">
+                <p class="player-p">Computer</p>
+                <i class="fas fa-robot icon"></i>
+            </div>
+            
+            <div class="computer-options">
+                <button class="btn"><i class="fas fa-hand-rock op-icon"></i>Rock</button>
+                <button class="btn"><i class="fas fa-hand-paper op-icon"></i>Paper</button>
+                <button class="btn"><i class="fas fa-hand-peace op-icon"></i>Scissors</button>
+            </div>
+        </div>        
+    </div>
+
+    <div class="score">
+        <h2 id="score">Score</h2>
+        <h2 id="round">Round: </h2>
+
+        <div class="score-div">
+            <h3 id="player">Player: </h3>
+            <h3>Computer: </h3>
+        </div>
+        
+    </div>
+    
 
     <script src="./script.js"></script>
     
