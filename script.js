@@ -1,72 +1,84 @@
-function computerPlay () {
+const playerChoice = document.querySelectorAll('.playerBtn');
+const computerChoice = document.querySelectorAll('.computerBtn')
+const display = document.querySelectorAll('.playerBtn');
+const computerSpan = document.querySelector('.computerspan');
+const playerSpan = document.querySelector('.playerspan');
+const roundSpan = document.querySelector('.roundspan');
+const scoreSpan = document.querySelector('.scorespan');
+
+playerChoice.forEach((button) => button.addEventListener('click', playRound));
+display.forEach((b) => b.addEventListener('click', displayScore));
+
+function computerSelectOption () {
     let computerOptions = ["rock", "paper", "scissors"]
-    let computerChoice = computerOptions[Math.floor(Math.random()*computerOptions.length)]
-    return computerChoice
+    let computerPick = computerOptions[Math.floor(Math.random()*3)]
+    return computerPick
+}
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+
+function displayScore() {
+    if (playerScore === 5 | computerScore === 5) {
+        if(playerScore > computerScore) {
+            alert('You win the game!!')
+        } else if(computerScore > playerScore) {
+            alert ('Computer wins the game!!')
+        }
+        window.location.reload(true); 
+    }
+
 }
 
 
-function playRound(playerSelection, computerSelection) {
+
+function playRound (e) {
+
+    e.preventDefault();
+    round++;
+
+    //SELECTS PLAYER CHOICE
+    const playerChooses = this.value;
+
+    //SELECTS COMPUTER CHOICE    
+    const computerChooses = computerSelectOption();
+
+    //HIGHLIGHTS COMPUTER CHOICE
+    for (let i = 0; i<3; i++) {
+        if (computerChoice[i].classList.contains(`${computerChooses}`)) {
+            computerChoice[i].style.boxShadow = '0 0 20px 10px rgb(108, 108, 255)'
+        }
+    }
+
+    //DECIDE WHO IS THE WINNER
     let winner;
-    if (playerSelection === 'rock' && computerSelection === 'paper') {
-        winner = 'computer'
-    }else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        winner = 'player'
-    }else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        winner = 'player'
-    }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        winner = 'computer'
-    }else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        winner = 'player'
-    }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        winner = 'computer'
-    }else if (playerSelection === computerSelection) {
-        winner = 'a tie'
+    if (playerChooses === 'rock' && computerChooses === 'paper') {
+        winner = 'computer wins'
+    }else if (playerChooses === 'rock' && computerChooses === 'scissors') {
+        winner = 'player wins'
+    }else if (playerChooses === 'paper' && computerChooses === 'rock') {
+        winner = 'player wins'
+    }else if (playerChooses === 'paper' && computerChooses === 'scissors') {
+        winner = 'computer wins'
+    }else if (playerChooses === 'scissors' && computerChooses === 'paper') {
+        winner = 'player wins'
+    }else if (playerChooses === 'scissors' && computerChooses === 'rock') {
+        winner = 'computer wins'
+    }else if (playerChooses === computerChooses) {
+        winner = "it's a tie";
     }
 
-    return winner;
-}
+    if (winner === 'player wins') {
+        playerScore++
 
-
-
-/*function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 1; i<=5; i++) {
-        console.log(`--------Round number ${i}--------`);
-
-
-
-        const playerSelectionInitialValue = window.prompt(`Choose rock, paper or scissors:`)
-        const playerPick = playerSelectionInitialValue.toLowerCase()
-        const computerPick = computerPlay()
-
-        console.log(`Your choice: ${playerPick}`)
-        console.log(`Computer choice: ${computerPick}`)
-        console.log(`The winner is: ${playRound(playerPick, computerPick)}`)
-            if (playRound(playerPick, computerPick) === 'player') {
-                playerScore++
-            }else if(playRound(playerPick, computerPick) === 'computer') {
-                computerScore++
-            }else if(playRound(playerPick, computerPick) === 'a tie') {
-                computerScore++;
-                playerScore++
-            }
-        console.log(`Scores: player: ${playerScore}  computer: ${computerScore}`)
+    } else if (winner === 'computer wins') {
+        computerScore++
     }
-
-    console.log("-----------------------------")
-    let whoWon;
-    if (playerScore > computerScore) {
-        whoWon = 'Player!!'
-    }else if (playerScore < computerScore) {
-        whoWon = 'Computer!!'
-    } else if (playerScore === computerScore) {
-        whoWon = "It's a tie!!"
-    }
-
-    console.log(`AND THE WINNER IS: ${whoWon}`)
-}*/
+    playerSpan.innerHTML = `${playerScore}`;
+    computerSpan.innerHTML = `${computerScore}`;
+    roundSpan.innerHTML = `${round}`;
+    scoreSpan.innerHTML = `${winner}`
 
 
-
+};

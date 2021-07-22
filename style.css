@@ -100,7 +100,7 @@ body {
     border: 5px solid black;
 }
 
-.btn:hover {
+.playerBtn:hover {
     box-shadow: 0 0 20px 10px rgb(108, 108, 255);
     transform: scale(1.1);
 }
@@ -123,10 +123,16 @@ body {
 #score {
     font-size: 2rem;
     font-weight: bolder;
-    text-align: center;
-
-    
+    text-align: center;    
 }
+
+.newH2 {
+    font-size: 1rem;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 1rem;    
+}
+
 
 #round {
     font-size: 1rem;

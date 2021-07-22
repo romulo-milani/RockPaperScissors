@@ -26,11 +26,11 @@
                 <i class="fas fa-user icon"></i>
             </div>
             
-            <div class="player-options">
-                <button class="btn"><i class="fas fa-hand-rock op-icon"></i>Rock</button>
-                <button class="btn"><i class="fas fa-hand-paper op-icon"></i>Paper</button>
-                <button class="btn"><i class="fas fa-hand-peace op-icon"></i>Scissors</button>
-            </div>
+            <form class="player-options" id="playerForm">
+                    <button value="rock" class="btn playerBtn" ><i value="rock" class="fas fa-hand-rock op-icon"></i>Rock</button>
+                    <button value="paper" class="btn playerBtn"><i value="paper" class="fas fa-hand-paper op-icon"></i>Paper</button>
+                    <button value="scissors" class="btn playerBtn"><i value="scissors" class="fas fa-hand-peace op-icon"></i>Scissors</button>
+            </form>
         </div>
 
         <div class="computer">
@@ -39,21 +39,21 @@
                 <i class="fas fa-robot icon"></i>
             </div>
             
-            <div class="computer-options">
-                <button class="btn"><i class="fas fa-hand-rock op-icon"></i>Rock</button>
-                <button class="btn"><i class="fas fa-hand-paper op-icon"></i>Paper</button>
-                <button class="btn"><i class="fas fa-hand-peace op-icon"></i>Scissors</button>
-            </div>
+            <form class="computer-options" id="computerForm">
+                    <button value="rock" class="btn computerBtn rock"><i class="fas fa-hand-rock op-icon"></i>Rock</button>
+                    <button value="rock" class="btn computerBtn paper"><i class="fas fa-hand-paper op-icon"></i>Paper</button>
+                    <button value="rock" class="btn computerBtn scissors"><i class="fas fa-hand-peace op-icon"></i>Scissors</button>
+            </form>
         </div>        
     </div>
 
     <div class="score">
-        <h2 id="score">Score</h2>
-        <h2 id="round">Round: </h2>
+        <h2 id="score"><span class="scorespan">Score</span></h2>
+        <h2 id="round">Round: <span class="roundspan">0</span></h2>
 
         <div class="score-div">
-            <h3 id="player">Player: </h3>
-            <h3>Computer: </h3>
+            <h3 id="player">Player: <span class="playerspan">0</span></h3>
+            <h3>Computer: <span class="computerspan">0</span></h3>
         </div>
         
     </div>
