@@ -28,7 +28,6 @@ function displayScore() {
         }
         window.location.reload(true); 
     }
-
 }
 
 
@@ -47,7 +46,7 @@ function playRound (e) {
     //HIGHLIGHTS COMPUTER CHOICE
     for (let i = 0; i<3; i++) {
         if (computerChoice[i].classList.contains(`${computerChooses}`)) {
-            computerChoice[i].style.boxShadow = '0 0 20px 10px rgb(108, 108, 255)'
+            computerChoice[i].style.boxShadow = '0 0 20px 10px rgb(185, 32, 83)';
         }
     }
 
@@ -69,6 +68,8 @@ function playRound (e) {
         winner = "it's a tie";
     }
 
+    //UPDATES THE SCORE
+
     if (winner === 'player wins') {
         playerScore++
 
@@ -78,7 +79,16 @@ function playRound (e) {
     playerSpan.innerHTML = `${playerScore}`;
     computerSpan.innerHTML = `${computerScore}`;
     roundSpan.innerHTML = `${round}`;
-    scoreSpan.innerHTML = `${winner}`
+    scoreSpan.innerHTML = `${winner}`;
 
+
+    //DISABLES HIGHLIGHTS
+    computerHighlightBtn.forEach(btn => btn.addEventListener('transitionend', removeTransition));
+
+    function removeTransition (e) {
+        if(e.propertyName == 'transform') {
+            this.classList.remove('computerHighlighter')
+        }
+    };
 
 };
