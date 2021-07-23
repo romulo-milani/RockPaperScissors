@@ -5,6 +5,8 @@ const computerSpan = document.querySelector('.computerspan');
 const playerSpan = document.querySelector('.playerspan');
 const roundSpan = document.querySelector('.roundspan');
 const scoreSpan = document.querySelector('.scorespan');
+const h1winner = document.querySelector('#winner-h1');
+const h2winner = document.querySelector('#winner-h2');
 
 playerChoice.forEach((button) => button.addEventListener('click', playRound));
 display.forEach((b) => b.addEventListener('click', displayScore));
@@ -19,17 +21,25 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0;
 
+//DISPLAYS THE WINNER AND RELOADS THE PAGE
 function displayScore() {
     if (playerScore === 5 | computerScore === 5) {
         if(playerScore > computerScore) {
-            alert('You win the game!!')
+            h1winner.innerHTML = 'You win the game!!';
+            h1winner.style.color = 'rgb(108, 108, 255)';
+            h2winner.innerHTML = 'Refresh to play again';
+            alert('Game over!');
+            window.location.reload(true); 
         } else if(computerScore > playerScore) {
-            alert ('Computer wins the game!!')
-        }
-        window.location.reload(true); 
+            h1winner.innerHTML = 'Computer wins the game!!';
+            h1winner.style.color = 'rgb(185, 32, 83)';
+            h2winner.innerHTML = 'Refresh to play again';
+            alert('Game over!');
+            window.location.reload(true);
+        }        
     }
+    
 }
-
 
 
 function playRound (e) {
@@ -83,12 +93,15 @@ function playRound (e) {
 
 
     //DISABLES HIGHLIGHTS
-    computerHighlightBtn.forEach(btn => btn.addEventListener('transitionend', removeTransition));
+    computerChoice.forEach(btn => btn.addEventListener('transitionend', removeTransition));
 
     function removeTransition (e) {
-        if(e.propertyName == 'transform') {
-            this.classList.remove('computerHighlighter')
-        }
-    };
+        for (let i = 0; i<3; i++) {
+            if(e.propertyName == 'box-shadow') {
+                computerChoice[i].style.boxShadow = '0 0 0 0 black'
+            }
 
+        }
+        
+    };
 };
